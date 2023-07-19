@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/Config-service/pom.xml" />
+        <option value="$PROJECT_DIR$/Discovery-service/pom.xml" />
+        <option value="$PROJECT_DIR$/ApiGateWay-service/pom.xml" />
+        <option value="$PROJECT_DIR$/User-Service/pom.xml" />
+        <option value="$PROJECT_DIR$/Student-Service/pom.xml" />
+        <option value="$PROJECT_DIR$/School-Service/pom.xml" />
+        <option value="$PROJECT_DIR$/Contact-Service/pom.xml" />
+        <option value="$PROJECT_DIR$/Reward-Service/pom.xml" />
+        <option value="$PROJECT_DIR$/Element-service/pom.xml" />
+        <option value="$PROJECT_DIR$/Avatar-service/pom.xml" />
+        <option value="$PROJECT_DIR$/Teacher-Service/pom.xml" />
+        <option value="$PROJECT_DIR$/Class-Service/pom.xml" />
+        <option value="$PROJECT_DIR$/Auth-service/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_19" default="true" project-jdk-name="19" project-jdk-type="JavaSDK" />
+</project>

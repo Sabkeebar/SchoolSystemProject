@@ -1,0 +1,35 @@
+server:
+  port: 8089
+spring:
+  application:
+    name: STUDENT-SERVICE
+  data:
+    mongodb:
+      uri: mongodb+srv://sa:password_123@cluster0.9hlq7wj.mongodb.net/?retryWrites=true&w=majority
+      database: students
+
+
+  #Kafka
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      group-id: studentGroup1
+      auto-offset-reset: earliest
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.trusted.packages: "*"
+
+student1Topic: student1Topic
+studentScore: 1000
+#eureka setting
+eureka:
+  client:
+    eureka-service-url-defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

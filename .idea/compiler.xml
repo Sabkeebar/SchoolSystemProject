@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Discovery-service" />
+        <module name="Student-Service" />
+        <module name="Element-service" />
+        <module name="Avatar-service" />
+        <module name="School-Service" />
+        <module name="Contact-Service" />
+        <module name="Teacher-Service" />
+        <module name="User-Service" />
+        <module name="Reward-Service" />
+        <module name="Class-Service" />
+        <module name="ApiGateWay-service" />
+        <module name="Config-service" />
+        <module name="Auth-service" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ApiGateWay-service" target="17" />
+      <module name="Auth-service" target="17" />
+      <module name="Avatar-service" target="17" />
+      <module name="Class-Service" target="17" />
+      <module name="Config-service" target="17" />
+      <module name="Contact-Service" target="17" />
+      <module name="Discovery-service" target="17" />
+      <module name="Element-service" target="17" />
+      <module name="Reward-Service" target="17" />
+      <module name="School-Service" target="17" />
+      <module name="Student-Service" target="17" />
+      <module name="Teacher-Service" target="17" />
+      <module name="User-Service" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ApiGateWay-service" options="-parameters" />
+      <module name="Auth-service" options="-parameters" />
+      <module name="Avatar-service" options="-parameters" />
+      <module name="Class-Service" options="-parameters" />
+      <module name="Config-service" options="-parameters" />
+      <module name="Contact-Service" options="-parameters" />
+      <module name="Discovery-service" options="-parameters" />
+      <module name="Element-service" options="-parameters" />
+      <module name="Reward-Service" options="-parameters" />
+      <module name="School-Service" options="-parameters" />
+      <module name="Student-Service" options="-parameters" />
+      <module name="Teacher-Service" options="-parameters" />
+      <module name="User-Service" options="-parameters" />
+    </option>
+  </component>
+</project>

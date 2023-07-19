@@ -1,0 +1,19 @@
+
+server:
+  port: 8084
+spring:
+  application:
+    name: SCHOOL-SERVICE
+  data:
+    mongodb:
+      uri: mongodb+srv://sa:password_123@cluster0.kqekkp7.mongodb.net/?retryWrites=true&w=majority
+      database: schools
+
+
+#eureka setting
+eureka:
+  client:
+    eureka-service-url-defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+

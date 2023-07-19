@@ -1,0 +1,32 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: Auth-SERVICE
+  data:
+    mongodb:
+      uri: mongodb+srv://sa:password_123@cluster0.igb1z.mongodb.net/?retryWrites=true&w=majority
+      database: users
+
+
+  #Kafka
+#  kafka:
+#    bootstrap-servers: localhost:9092
+#    consumer:
+#      group-id: studentGroup1
+#      auto-offset-reset: earliest
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+#      properties:
+#        spring.json.trusted.packages: "*"
+#
+#  studentTopic1: student1Topic
+
+#eureka setting
+eureka:
+  client:
+    eureka-service-url-defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+

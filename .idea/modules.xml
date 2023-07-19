@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ApiGateWay-service/ApiGateWay-service.iml" filepath="$PROJECT_DIR$/ApiGateWay-service/ApiGateWay-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Auth-service/Auth-service.iml" filepath="$PROJECT_DIR$/Auth-service/Auth-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Avatar-service/Avatar-service.iml" filepath="$PROJECT_DIR$/Avatar-service/Avatar-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Class-Service/Class-Service.iml" filepath="$PROJECT_DIR$/Class-Service/Class-Service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Config-service/Config-service.iml" filepath="$PROJECT_DIR$/Config-service/Config-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Contact-Service/Contact-Service.iml" filepath="$PROJECT_DIR$/Contact-Service/Contact-Service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Discovery-service/Discovery-service.iml" filepath="$PROJECT_DIR$/Discovery-service/Discovery-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Element-service/Element-service.iml" filepath="$PROJECT_DIR$/Element-service/Element-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Project.iml" filepath="$PROJECT_DIR$/.idea/Project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Reward-Service/Reward-Service.iml" filepath="$PROJECT_DIR$/Reward-Service/Reward-Service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/School-Service/School-Service.iml" filepath="$PROJECT_DIR$/School-Service/School-Service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Student-Service/Student-Service.iml" filepath="$PROJECT_DIR$/Student-Service/Student-Service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Teacher-Service/Teacher-Service.iml" filepath="$PROJECT_DIR$/Teacher-Service/Teacher-Service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/User-Service/User-Service.iml" filepath="$PROJECT_DIR$/User-Service/User-Service.iml" />
+    </modules>
+  </component>
+</project>
