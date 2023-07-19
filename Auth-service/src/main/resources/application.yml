@@ -7,7 +7,12 @@ spring:
     mongodb:
       uri: mongodb+srv://sa:password_123@cluster0.igb1z.mongodb.net/?retryWrites=true&w=majority
       database: users
+  security:
+    user:
+      name: saba
+      password: 123
 
+      roles: Admin
 
   #Kafka
 #  kafka:
