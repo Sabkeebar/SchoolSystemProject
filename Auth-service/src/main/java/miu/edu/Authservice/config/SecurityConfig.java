@@ -40,7 +40,7 @@ public class SecurityConfig{
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
-/*
+
     @Bean
     public AuthenticationManager authManager(HttpSecurity http,
                                              BCryptPasswordEncoder bCryptPasswordEncoder,
@@ -55,23 +55,26 @@ public class SecurityConfig{
     }
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception{
-            httpSecurity.cors()
-                    .and()
+            httpSecurity
+
                     .csrf()
                     .disable()
                     .authorizeRequests()
-                    .antMatchers("/uaa/**", "/properties/**").permitAll()
+                    .requestMatchers("/api/v1/teachers/**")
+                    .hasAuthority("Admin")
+                    .requestMatchers("/login/**").permitAll();
 
                     //.antMatchers("/test/**")
-                    .anyRequest()
-                    .authenticated()
-                    .and()
-                    .sessionManagement()
-                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-                    httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+                   // .anyRequest()
+                  //  .authenticated();
+
+                    //.and()
+                    //.sessionManagement()
+                    //.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                   // httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
         return httpSecurity.build();
-    }*/
+    }
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder(){
         return new BCryptPasswordEncoder();

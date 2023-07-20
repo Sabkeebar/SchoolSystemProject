@@ -8,6 +8,7 @@ import miu.edu.Avatarservice.Domain.Avatar;
 import miu.edu.ClassService.dto.Class;
 import miu.edu.Elementservice.domain.ElementType;
 import miu.edu.RewardService.domain.Reward;
+import miu.edu.RewardService.helper.RewardType;
 import miu.edu.SchoolService.domain.School;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -31,7 +32,7 @@ public class Student {
     private School school;
     private Class studentClass ;
     private Avatar avatar;
-    private List<Reward> reward;
+    private HashMap<RewardType,Reward> rewardMap;
     private HashMap<ElementType, Double> elementMap ;
 
 

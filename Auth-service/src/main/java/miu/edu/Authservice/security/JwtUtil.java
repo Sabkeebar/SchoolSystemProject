@@ -18,7 +18,7 @@ public class JwtUtil {
 
     public static final long JWT_TOKEN_VALIDITY = 100 * 60 ;
 
-    private final String secret = "group3";
+    private final String secret = "clFMGygp5veo65Lml7Pe6taA1CkbghTfIDD6YFkADrYRQoEwkFQD7fhbwpdNOPRNfngTU1xO51u2tIDQqZU_IQ";
 
     //retrieve username from jwt token
     public String getUsernameFromToken(String token) {

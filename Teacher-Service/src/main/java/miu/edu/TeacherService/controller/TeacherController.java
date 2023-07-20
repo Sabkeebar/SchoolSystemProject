@@ -18,6 +18,7 @@ public class TeacherController {
     TeacherService teacherService;
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    //@PreAuthorize("hasAuthority('admin')")
     public TeacherDto addTeacher(@RequestBody  TeacherAdaptor teacherAdaptor){
        return teacherService.addTeacher(teacherAdaptor);
     }

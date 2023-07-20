@@ -8,6 +8,7 @@ import miu.edu.Elementservice.dto.ElementDto;
 import miu.edu.Elementservice.dto.ElementResponse;
 import miu.edu.RewardService.domain.Reward;
 import miu.edu.RewardService.dto.RewardDto;
+import miu.edu.RewardService.helper.RewardType;
 import miu.edu.SchoolService.domain.School;
 import miu.edu.SchoolService.dto.SchoolDto;
 import miu.edu.StudentService.domain.Student;
@@ -38,32 +39,32 @@ public class StudentServiceImpl  implements StudentService {
     @Autowired
     SchoolFeignClient schoolFeignClient;
 
-   // @Autowired
-   // RewardFeignClient rewardFeignClient;
+    @Autowired
+    RewardFeignClient rewardFeignClient;
 
     @Autowired
     ElementFeignClient elementFeignClient;
 
 
-
-@Value("${studentScore}")
-private  double stScore;
+    @Value("${studentScore}")
+    private double stScore;
     @Autowired
     private KafkaTemplate<String, UserDto> kafkaTemplate;
     Logger LOGGER = LoggerFactory.getLogger(StudentServiceImpl.class);
+
     @Override
     public StudentDto add(StudentAdaptor studentAdaptor) {
         System.out.println("here");
         LOGGER.info("HERE");
-        Student student = modelMapper.map(studentAdaptor,Student.class);
+        Student student = modelMapper.map(studentAdaptor, Student.class);
 //        create school
         System.out.println(studentAdaptor.getSchoolId());
         SchoolDto schoolDto = schoolFeignClient.getSchool(studentAdaptor.getSchoolId());
         School school = modelMapper.map(schoolDto, School.class);
 
         //createReward
-       // RewardDto rewardDto = rewardFeignClient.getRewardByName(studentAdaptor.getRewardName()).getBody();
-      //  Reward reward = modelMapper.map(rewardDto, Reward.class);
+        // RewardDto rewardDto = rewardFeignClient.getRewardByName(studentAdaptor.getRewardName()).getBody();
+        //  Reward reward = modelMapper.map(rewardDto, Reward.class);
 
         //class
         Class studentClass = new Class();
@@ -77,10 +78,10 @@ private  double stScore;
 
 
         student.setSchool(school);
-       // student.setReward();
-        List<Reward> rewards =new ArrayList<>();
-       // rewards.add(reward);
-       // student.setReward(rewards);
+        // student.setReward();
+        List<Reward> rewards = new ArrayList<>();
+        // rewards.add(reward);
+        // student.setReward(rewards);
         student.setStudentClass(studentClass);
         student.setScore(stScore);
         studentRepository.save(student);
@@ -93,9 +94,9 @@ private  double stScore;
         userDto.setPassword(studentAdaptor.getPassword());
         userDto.setRole(studentAdaptor.getRole());
 
-        kafkaTemplate.send("student1Topic",userDto);
+        kafkaTemplate.send("student1Topic", userDto);
 
-        LOGGER.info("sent message :" +userDto);
+        LOGGER.info("sent message :" + userDto);
 
         //return modelMapper.map(savedTeacher, TeacherDto.class);
 
@@ -104,9 +105,9 @@ private  double stScore;
 
     @Override
     public StudentDto view(String studentId) {
-   Student student =studentRepository.findById(studentId).get();
+        Student student = studentRepository.findById(studentId).get();
 
-        return modelMapper.map(student,StudentDto.class);
+        return modelMapper.map(student, StudentDto.class);
     }
 
     @Override
@@ -114,11 +115,11 @@ private  double stScore;
         List<Student> students = studentRepository.findAll();
         List<StudentDto> studentDtos = new ArrayList<>();
         //School school =
-        for(Student student :students){
-            StudentDto studentDto =modelMapper.map(student,StudentDto.class);
+        for (Student student : students) {
+            StudentDto studentDto = modelMapper.map(student, StudentDto.class);
             studentDtos.add(studentDto);
         }
-        return  studentDtos;
+        return studentDtos;
     }
 
     @Override
@@ -128,35 +129,35 @@ private  double stScore;
 
     @Override
     public void remove(String studentId) {
-     studentRepository.deleteById(studentId);
+        studentRepository.deleteById(studentId);
     }
 
     @Override
-    public String buyElement(String studentId,String elementId) {
+    public String buyElement(String studentId, String elementId) {
         Student student = studentRepository.findById(studentId).get();
-        ElementResponse elementResponse =elementFeignClient.getElementById(elementId);
+        ElementResponse elementResponse = elementFeignClient.getElementById(elementId);
 
-        double studentScore =student.getScore();
+        double studentScore = student.getScore();
         //ElementDto elementDto = elementFeignClient.getElementById(elementId).getBody();
-        double elementPrice =elementResponse.getPrice();
-        if(studentScore<elementPrice){
+        double elementPrice = elementResponse.getPrice();
+        if (studentScore < elementPrice) {
             return "sorry you dont have enough score";
 
         }
         //  check check elementTye in student's avatar
-        String elementType= elementResponse.getType().toString();
-        Element element = modelMapper.map( elementResponse, Element.class);
+        String elementType = elementResponse.getType().toString();
+        Element element = modelMapper.map(elementResponse, Element.class);
         Avatar avatar = student.getAvatar();
 
         // add element to student's avatar
         //  HEAD, HAIR, EYE, EYEBROW, NOSE, MOUTH, EARS, BODY, HAT, TOP, TOP_COLOUR, HAT_COLOUR
         //HashMap
         HashMap<ElementType, Double> elementMap1 = student.getElementMap();
-        if(elementMap1.get(ElementType.valueOf(elementType))!=null){
+        if (elementMap1.get(ElementType.valueOf(elementType)) != null) {
             Double existingElementPrice = elementMap1.get(ElementType.valueOf(elementType));
 
 
-            switch (elementType){
+            switch (elementType) {
 
                 case "HEAD" -> avatar.setHead(element.getType().toString());
 
@@ -188,10 +189,9 @@ private  double stScore;
             return modelMapper.map(studentRepository.save(student), StudentDto.class).toString();
 
 
-        }
-        else {
+        } else {
             //avatar.setHead(element.getType().toString());
-            switch (elementType){
+            switch (elementType) {
 
                 case "HEAD" -> avatar.setHead(element.getType().toString());
 
@@ -218,7 +218,7 @@ private  double stScore;
                 case "HAT_COLOUR" -> avatar.setHatColor(element.getType().toString());
 
             }
-        // remove head
+            // remove head
 
             student.setScore(studentScore - elementPrice);
             elementMap1.put(ElementType.valueOf(elementType), elementPrice);
@@ -228,6 +228,25 @@ private  double stScore;
         }
     }
 
+    public String addReward(String studentId, String rewardName) {
+        Student student = studentRepository.findById(studentId).get();
+        RewardDto rewardDto = rewardFeignClient.getRewardByName(rewardName).getBody();
+        HashMap<RewardType, Reward> studentRewardMap = student.getRewardMap();
+        double studentScore = student.getScore();
+
+        if (studentRewardMap.get(RewardType.valueOf(rewardName)) != null) {
+            return "reward already exists";
+        } else {
+            Reward reward = modelMapper.map(rewardDto, Reward.class);
+            if (studentScore < reward.getPrice()) {
+                return "sorry you dont have enough score";
+            }
+            studentRewardMap.put(RewardType.valueOf(rewardName), reward);
+            student.setScore(studentScore - reward.getPrice());
+            student.setRewardMap(studentRewardMap);
+            return modelMapper.map(studentRepository.save(student), StudentDto.class).toString();
+        }
 
 
+    }
 }

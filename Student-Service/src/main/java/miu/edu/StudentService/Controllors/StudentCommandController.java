@@ -26,7 +26,10 @@ public class StudentCommandController {
     public  String buyElement(@PathVariable String studentId, @PathVariable String elementId){
   return studentService.buyElement(studentId,elementId);
     }
-
+    @GetMapping("/reward/{studentId}/{rewardName}")
+    public String addReward(@PathVariable String studentId, @PathVariable String rewardName){
+      return  studentService.addReward(studentId,rewardName);
+    }
 @GetMapping("/{studentId}")
     public StudentDto view(@PathVariable String studentId){
     return studentService.view(studentId);

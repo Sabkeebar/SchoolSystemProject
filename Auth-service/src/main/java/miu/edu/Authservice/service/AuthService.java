@@ -28,11 +28,11 @@ public class AuthService {
     @Autowired
     ModelMapper mapper;
 
-    @Autowired
-    BCryptPasswordEncoder passwordEncoder;
+//    @Autowired
+//    BCryptPasswordEncoder passwordEncoder;
 
     public LoginResponse login(LoginRequest request){
-        System.out.println(request.getPassword());
+        //System.out.println(request.getPassword());
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
         SecurityContextHolder.getContext().getAuthentication().getPrincipal();

@@ -13,6 +13,6 @@ public interface StudentService {
     public StudentDto  updateStudent(String studentId,StudentAdaptor studentAdaptor);
     public void remove  (String studentId);
     public  String buyElement(String studentId,String elementId);
-
+    public String addReward(String studentId, String rewardName);
 
 }
